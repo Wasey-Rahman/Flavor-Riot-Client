@@ -6,9 +6,13 @@ import Vegetable from './Vegetable.jpg';
 import Dal from './Dal.jpg';
 import Kabab from './Kabab.jpg';
 import Dessert from './dessert.jpg';
+import Fish from './Fish.mp4';
+import Laddo from './Laddo.mp4';
+import Lassi from './Lassi.mp4';
+import Sweet from './Sweet.mp4';
 
 
-import { Col, Image, Row } from 'react-bootstrap';
+import { Col, Container, Image, Row } from 'react-bootstrap';
 
 const Home = () => {
     
@@ -49,7 +53,33 @@ const Home = () => {
               
             </Row>
             </section>
-            
+            <section>
+            <h2 className='mt-5 text-center text-primary'>Applied Recipe Food</h2>
+            <Container fluid>
+             <Row className='mt-5'>
+               <Col xs={12} md={6}>
+                 <video width="100%" height="auto" controls>
+            <    source src={Fish} type="video/mp4" />
+                  </video>
+                </Col>
+                <Col xs={12} md={6}>
+                 <video width="100%" height="auto" controls>
+            <    source src={Laddo} type="video/mp4" />
+                  </video>
+                </Col>
+                <Col xs={12} md={6}>
+                 <video width="100%" height="auto" controls>
+            <    source src={Lassi} type="video/mp4" />
+                  </video>
+                </Col>
+                <Col xs={12} md={6}>
+                 <video width="100%" height="auto" controls>
+            <    source src={Sweet} type="video/mp4" />
+                  </video>
+                </Col>
+              </Row>
+            </Container>
+            </section>
         </section>
         
         
