@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home/Home";
 import LogIn from "../layout/LogIn/LogIn";
 
 
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -19,6 +20,12 @@ import LogIn from "../layout/LogIn/LogIn";
       path:'login',
       element:<LogIn></LogIn>
     },
+    // {
+    //   path:'ChefInfo',
+    //   element:<ChefInfo></ChefInfo>,
+    //   loader:({params})=>fetch(`http://localhost:5000/chef`)
+
+    // }
     
   ]);
   export default router;

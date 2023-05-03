@@ -27,17 +27,17 @@ const Footer = () => {
           <Col md={4} className="my-4 ">
             <h5>Explore</h5>
             <ul className="list-unstyled">
-              <li>
-                <a href="#">Browse Recipes</a>
+              <li >
+                <a href="#" className='text-decoration-none text-light'>Browse Recipes</a>
               </li>
               <li>
-                <a href="#">Submit a Recipe</a>
+                <a href="#"  className='text-decoration-none text-light'>Submit a Recipe</a>
               </li>
               <li>
-                <a href="#">Our Chefs</a>
+                <a href="#"  className='text-decoration-none text-light'>Our Chefs</a>
               </li>
               <li>
-                <a href="#">Latest News</a>
+                <a href="#"  className='text-decoration-none text-light'>Latest News</a>
               </li>
             </ul>
           </Col>
