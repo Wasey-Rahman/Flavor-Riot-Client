@@ -9,11 +9,13 @@ const ChefRecipes = () => {
     const [recipes, setRecipes] = useState([]);
     const [favorites, setFavorites] = useState(new Set());
     
+    
   
   useEffect(() => {
     fetch('http://localhost:5000/chef')
       .then(res => res.json())
-      .then(data => setRecipes(data))
+      .then(data =>setRecipes(data))
+      
       .catch(error => console.log(error))
   }, []);
 
@@ -28,7 +30,8 @@ const ChefRecipes = () => {
     return (
         <div>
         <Navigation></Navigation>
-             {recipes.map(recipe => (
+        
+         {recipes.map(recipe => (
           <div className="col-md-4 mb-3" key={recipe.id}>
             <Container className="my-5">
       <Row>
@@ -143,7 +146,10 @@ const ChefRecipes = () => {
     <Outlet></Outlet>
     <Footer></Footer>
    </div>
-    )
+  
+    );
+         
+    
              
              
     
