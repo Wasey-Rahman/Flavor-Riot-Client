@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import { Button, Col, Container, Image, Row, Toast } from 'react-bootstrap';
 import Navigation from '../../../../Shared/Navigation/Navigation';
 import Footer from '../../../../Shared/Footer/Footer';
 import { Outlet, useParams } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { Outlet, useParams } from 'react-router-dom';
 const ChefRecipes = () => {
   const {id} =useParams();
     const [recipes, setRecipes] = useState([]);
+    const [favorites, setFavorites] = useState(new Set());
     
   
   useEffect(() => {
@@ -16,7 +17,10 @@ const ChefRecipes = () => {
       .catch(error => console.log(error))
   }, []);
 
-  
+  const handleFavorite = (name) => {
+    setFavorites(new Set(favorites.add(name)));
+  };
+
 
 
 
@@ -51,7 +55,25 @@ const ChefRecipes = () => {
                 <p >Ingredients:{recipe.First_ingredients}</p>
                 <p>Cooking Method: {recipe.First_cooking_method}</p>
                 <p>Rating: {recipe.First_rating}/5</p>
-                <Button variant="primary">Add to Favorites</Button>
+                {/* <Button variant="primary">Add to Favorites</Button> */}
+                <Button
+                  variant="primary"
+                  disabled={favorites.has(recipe.First_name)}
+                  onClick={() => handleFavorite(recipe.First_name)}
+                >
+                  Add to Favorites
+                </Button>
+                <Toast
+                  onClose={() => setFavorites(new Set(favorites.delete(recipe.First_name)))}
+                  show={favorites.has(recipe.First_name)}
+                  delay={3000}
+                  autohide
+                  style={{ position: 'absolute', top: 0, right: 0 }}
+                >
+                  <Toast.Body>
+                    {recipe.First_name} has been added to your favorites!
+                  </Toast.Body>
+                </Toast>
               </Col>
             </Row>
             <Row>
@@ -63,7 +85,25 @@ const ChefRecipes = () => {
                <p>Ingredients:{recipe.Second_ingredients}</p>
                 <p>Cooking Method: {recipe.Second_cookingMethod}</p>
                 <p>Rating: {recipe.Second_rating}/5</p>
-                <Button variant="primary">Add to Favorites</Button>
+                {/* <Button variant="primary">Add to Favorites</Button> */}
+                <Button
+                  variant="primary"
+                  disabled={favorites.has(recipe.Second_name)}
+                  onClick={() => handleFavorite(recipe.Second_name)}
+                >
+                  Add to Favorites
+                </Button>
+                <Toast
+                  onClose={() => setFavorites(new Set(favorites.delete(recipe.Second_name)))}
+                  show={favorites.has(recipe.Second_name)}
+                  delay={3000}
+                  autohide
+                  style={{ position: 'absolute', top: 0, right: 0 }}
+                >
+                  <Toast.Body>
+                    {recipe.Second_name} has been added to your favorites!
+                  </Toast.Body>
+                </Toast>
               </Col>
             </Row>
             <Row>
@@ -75,7 +115,26 @@ const ChefRecipes = () => {
                 <p>Ingredients:{recipe.Third_ingredients}</p>
                 <p>Cooking Method: {recipe.Third_cookingMethod}</p>
                 <p>Rating: {recipe.Third_rating}/5</p>
-                <Button variant="primary">Add to Favorites</Button>
+                {/* <Button variant="primary">Add to Favorites</Button> */}
+                <Button
+                  variant="primary"
+                  disabled={favorites.has(recipe.Third_name)}
+                  onClick={() => handleFavorite(recipe.Third_name)}
+                >
+                  Add to Favorites
+                </Button>
+                <Toast
+                  onClose={() => setFavorites(new Set(favorites.delete(recipe.Third_name)))}
+                  show={favorites.has(recipe.Third_name)}
+                  delay={3000}
+                  autohide
+                  style={{ position: 'absolute', top: 0, right: 0 }}
+                >
+                  <Toast.Body>
+                    {recipe.Third_name} has been added to your favorites!
+                  </Toast.Body>
+                </Toast>
+                
               </Col>
             </Row>
           </Container>
