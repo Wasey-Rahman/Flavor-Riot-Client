@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Chef = () => {
   const [chefs, setChefs] = useState([]);
@@ -26,7 +27,10 @@ const Chef = () => {
                 Numbers of recipes:{chef.recipes}<br></br>
                 Likes:{chef.likes}
                 </Card.Text>
-                <Button variant="primary">View Recipes Button</Button>
+                <Link to={`/ChefRecipes/${chef.id}`}>
+              <Button variant="primary">View Recipes Button</Button>
+              </Link>
+                
               </Card.Body>
             </Card>
           </div>
@@ -35,5 +39,4 @@ const Chef = () => {
     </div>
   );
 };
-
 export default Chef;

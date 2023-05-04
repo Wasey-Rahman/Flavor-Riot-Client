@@ -10,12 +10,14 @@ import Chef from '../pages/Home/Chef/Chef';
 
 
 
+
 const Main = () => {
     return (
         <div>
            <Navigation></Navigation>
            <Banner></Banner>
           <Chef></Chef>
+         
            <Home></Home>
            <Footer></Footer>
         </div>
