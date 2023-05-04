@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home/Home";
 import LogIn from "../layout/LogIn/LogIn";
 import ChefRecipes from "../pages/Home/Chef/ChefRecipes/ChefRecipes";
 import NotFound from "../404_page/NotFound";
+import Register from "../layout/Register/Register";
 
 
 
@@ -27,6 +28,10 @@ import NotFound from "../404_page/NotFound";
       path:'/ChefRecipes/:id',
       element:<ChefRecipes></ChefRecipes>,
       loader:({params})=>fetch(`http://localhost:5000/chef/${params.id}`)
+    },
+    {
+      path:'register',
+      element:<Register></Register>
     },
     // {
     //   path:'ChefInfo',
