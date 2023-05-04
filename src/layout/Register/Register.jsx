@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
+import Navigation from "../../Shared/Navigation/Navigation";
+import Footer from "../../Shared/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -26,8 +29,10 @@ const Register = () => {
   };
 
   return (
+<div>
+    <Navigation></Navigation>
     <div className="container mt-5">
-      <h2>Registration</h2>
+        <h2>Registration</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       <Form onSubmit={handleRegister}>
         <Form.Group controlId="formBasicName">
@@ -69,7 +74,12 @@ const Register = () => {
         <Button variant="primary" type="submit">
           Submit
         </Button>
+        <Form.Text>
+          Already have an account?<Link to="/login">LogIn</Link>
+        </Form.Text>
       </Form>
+    </div>
+    <Footer></Footer>
     </div>
   );
 };

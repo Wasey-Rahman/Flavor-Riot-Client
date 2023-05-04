@@ -1,37 +1,40 @@
 import React, { useState } from 'react';
 import { Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
-import Ellipse from './Ellipse 1(1).png';
+import { Link } from 'react-router-dom';
+// import Ellipse from './Ellipse 1(1).png';
 
 const Navigation = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
+  //   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [username, setUsername] = useState('');
  
 
-  const handleLogin = () => {
-    // Simulate a login action
-    setIsLoggedIn(true);
-    setUsername('John Doe');
-  };
+  // const handleLogin = () => {
+  //   // Simulate a login action
+  //   setIsLoggedIn(true);
+  //   setUsername('John Doe');
+  // };
 
-  const handleLogout = () => {
-    // Simulate a logout action
-    setIsLoggedIn(false);
-    setUsername('');
-  };
+  // const handleLogout = () => {
+  //   // Simulate a logout action
+  //   setIsLoggedIn(false);
+  //   setUsername('');
+  // };
     return (
         <Navbar collapseOnSelect expand="lg" bg="info" variant="light">
       <Container>
-        <Navbar.Brand href="#home">Flavor-Riot</Navbar.Brand>
+        <Navbar.Brand href="/">Flavor-Riot</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#blog">Blog</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="blog">Blog</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-          
+          <Link to={`/login`}>
+          <Button  variant="dark">LogIn</Button>
+          </Link>
         
-        <Nav>
+        {/* <Nav>
           {isLoggedIn ? (
             <NavDropdown
               title={
@@ -57,7 +60,7 @@ const Navigation = () => {
             <Button onClick={handleLogin} variant="dark">LogIn</Button>
             
           )}
-        </Nav>
+        </Nav> */}
       
        
       </Container>
