@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 // import Ellipse from './Ellipse 1(1).png';
 
 const Navigation = () => {
+  const {user}=useContext(AuthContext);
   //   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [username, setUsername] = useState('');
  
@@ -30,9 +32,13 @@ const Navigation = () => {
             <Nav.Link href="blog">Blog</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        <NavLink>{user}</NavLink>
           <Link to={`/login`}>
           <Button  variant="dark">LogIn</Button>
           </Link>
+          
+            
+            
         
         {/* <Nav>
           {isLoggedIn ? (

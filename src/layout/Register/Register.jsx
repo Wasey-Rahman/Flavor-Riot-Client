@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import Navigation from "../../Shared/Navigation/Navigation";
 import Footer from "../../Shared/Footer/Footer";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+  // const { createUser }=useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,6 +15,21 @@ const Register = () => {
 
   const handleRegister = (event) => {
     event.preventDefault();
+    // const form =event.target;
+    // const name =form.name.value;
+    // const photo =form.photo.value;
+    // const email =form.email.value;
+    // const password =form.password.value;
+    // console.log(name,photo,email,password)
+    // createUser(email,password)
+    // .then(result=>{
+    //   const createdUser=result.user;
+    //   console.log(createdUser);
+    // })
+    // .catch(error=>{
+    //   console.log(error);
+    // })
+
 
     if (email === "" || password === "") {
       setError("Please fill in all required fields");
@@ -72,7 +89,7 @@ const Register = () => {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Register
         </Button>
         <Form.Text>
           Already have an account?<Link to="/login">LogIn</Link>
