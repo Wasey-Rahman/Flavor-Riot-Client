@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
-  // const { createUser }=useContext(AuthContext);
+  const { createUser }=useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,20 +15,15 @@ const Register = () => {
 
   const handleRegister = (event) => {
     event.preventDefault();
-    // const form =event.target;
-    // const name =form.name.value;
-    // const photo =form.photo.value;
-    // const email =form.email.value;
-    // const password =form.password.value;
-    // console.log(name,photo,email,password)
-    // createUser(email,password)
-    // .then(result=>{
-    //   const createdUser=result.user;
-    //   console.log(createdUser);
-    // })
-    // .catch(error=>{
-    //   console.log(error);
-    // })
+    
+    createUser(email,password)
+    .then(result=>{
+      const createdUser=result.user;
+      console.log(createdUser);
+    })
+    .catch(error=>{
+      console.log(error);
+    })
 
 
     if (email === "" || password === "") {

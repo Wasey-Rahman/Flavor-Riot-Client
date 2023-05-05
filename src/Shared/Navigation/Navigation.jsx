@@ -32,7 +32,7 @@ const Navigation = () => {
             <Nav.Link href="blog">Blog</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <NavLink>{user}</NavLink>
+        <NavLink>{user.displayName}</NavLink>
           <Link to={`/login`}>
           <Button  variant="dark">LogIn</Button>
           </Link>
