@@ -5,6 +5,7 @@ import ChefRecipes from "../pages/Home/Chef/ChefRecipes/ChefRecipes";
 import NotFound from "../404_page/NotFound";
 import Register from "../layout/Register/Register";
 import Blog from "../Blog/Blog";
+import Pdf from "../Blog/DownloadPdf/Pdf";
 
 
 
@@ -34,9 +35,12 @@ import Blog from "../Blog/Blog";
     {
       path:'/ChefRecipes/:id',
       element:<ChefRecipes></ChefRecipes>,
-      loader:({params})=>fetch(`http://localhost:5000/chef/${params.id}`)
+      loader:({params})=>fetch(`https://flavor-riot-server-waseyrahman19-gmailcom.vercel.app/chef/${params.id}`)
     },
-    
+    {
+      path:'/pdf',
+      element:<Pdf></Pdf>
+    },
     
     {
       path:'*',

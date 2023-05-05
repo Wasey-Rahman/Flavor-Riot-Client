@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+
 const Chef = () => {
   const [chefs, setChefs] = useState([]);
   
   useEffect(() => {
-    fetch('http://localhost:5000/chef')
+    fetch('https://flavor-riot-server-waseyrahman19-gmailcom.vercel.app/chef')
       .then(res => res.json())
       .then(data => setChefs(data))
       .catch(error => console.log(error))
@@ -19,7 +20,10 @@ const Chef = () => {
         {chefs.map(chef => (
           <div className="col-md-4 mb-3" key={chef.id}>
             <Card className='mt-5'>
-              <Card.Img variant="top" src={chef.picture} />
+            
+                <Card.Img variant="top" src={chef.picture} />
+              
+              
               <Card.Body>
                 <Card.Title>{chef.name}</Card.Title>
                 <Card.Text>

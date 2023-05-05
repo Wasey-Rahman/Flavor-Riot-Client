@@ -1,11 +1,22 @@
 import React from 'react';
 import Navigation from '../Shared/Navigation/Navigation';
 import Footer from '../Shared/Footer/Footer';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 const Blog = () => {
+    
     return (
         <div>
             <Navigation></Navigation>
+            <h1 className='text-primary text-center'>Blog</h1>
+            <Link to={`/pdf`}>
+            <Button className="justify-content-center align-items-center"variant="dark">Download PDF</Button>
+
+            </Link>
+            
+            
             <h2>1)Tell us the differences between uncontrolled and controlled components.</h2>
             <p>In React, a component can either be a controlled or uncontrolled component depending on how it handles its state.An uncontrolled component is a form element that manages its own state internally. The state of the component is managed by the browser's DOM. In an uncontrolled component, the value of the input field is not controlled by React, but rather by the user's actions.A controlled component, on the other hand, is a form element that is managed by React. The value of the input field is controlled by the component's state. When the user interacts with the input field, an event is triggered and the state is updated.In general, controlled components offer more control and flexibility, but require more code to handle the state. Uncontrolled components, on the other hand, are easier to use, but may be limited in their functionality. </p>
 
@@ -24,7 +35,7 @@ In short, Node.js provides a runtime environment for executing JavaScript code o
 
 You would create a custom hook to encapsulate some functionality that you need to use across multiple components. By doing so, you can abstract the logic and make it easier to use and maintain.Custom hooks are a powerful tool in React, as they allow you to abstract complex logic and make it reusable. They can also help to make your code more organized and easier to maintain.</p>
 
-
+         
             <Footer></Footer>
         </div>
     );

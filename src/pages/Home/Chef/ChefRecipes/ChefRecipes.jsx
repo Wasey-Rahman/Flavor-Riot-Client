@@ -12,7 +12,7 @@ const ChefRecipes = () => {
     
   
   useEffect(() => {
-    fetch('http://localhost:5000/chef')
+    fetch('https://flavor-riot-server-waseyrahman19-gmailcom.vercel.app/chef')
       .then(res => res.json())
       .then(data =>setRecipes(data))
       
