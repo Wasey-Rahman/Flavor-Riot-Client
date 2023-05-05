@@ -1,20 +1,16 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword,signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword,signOut,signInWithPopup,GoogleAuthProvider,GithubAuthProvider} from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
+
 
 const firebaseConfig = {
   // Replace with your Firebase project's config object
-  apiKey: "AIzaSyACzBZjHNCYVguRasHwXWE1lnTPvm1zl4c",
-
-  authDomain: "flavor-riot-client-85197.firebaseapp.com",
-
-  projectId: "flavor-riot-client-85197",
-
-  storageBucket: "flavor-riot-client-85197.appspot.com",
-
-  messagingSenderId: "213825592631",
-
-  appId: "1:213825592631:web:38420074dd3555a96bceb2"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId:import.meta.env.VITE_projectId ,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId:import.meta.env.VITE_messagingSenderId ,
+  appId: import.meta.env.VITE_appId
 
 };
 
@@ -26,7 +22,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const[loading,setLoading]=useState(true);
-// const user ={diaplayName :'Mithai'}
+
 
   useEffect(() => {
     const auth = getAuth();
@@ -55,12 +51,29 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   }
 
+  const signInWithGoogle = () => {
+    setLoading(true);
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  };
+
+  const signInWithGitHub = () => {
+    setLoading(true);
+    const auth = getAuth();
+    const provider = new GithubAuthProvider();
+    return signInWithPopup(auth, provider);
+  };
+
   const authInfo = {
     user,
     loading,
     createUser,
     signIn,
-    logOut
+    logOut,
+    signInWithGoogle,
+    signInWithGitHub
+    
   };
 
   return (

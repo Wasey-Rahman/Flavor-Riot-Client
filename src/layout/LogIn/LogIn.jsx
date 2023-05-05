@@ -1,19 +1,23 @@
 import React, { useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import { GoogleLoginButton, GithubLoginButton } from 'react-social-login-buttons';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Footer from '../../Shared/Footer/Footer';
 import { FaGoogle,FaGithub } from 'react-icons/fa'
 import { AuthContext } from '../../Provider/AuthProvider';
 
+
+
+
 const LogIn = () => {
-  const {signIn}=useContext(AuthContext);
+  const {signIn,signInWithGoogle,signInWithGitHub}=useContext(AuthContext);
   const navigate =useNavigate();
   const location =useLocation();
   console.log('login page',location)
   const from=location.state?.from?.pathname ||'/'
 
+  
+  
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -31,6 +35,31 @@ const LogIn = () => {
         console.log(error);
       });
   };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from,{replace:true})
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+
+  const handleGithubSignIn = () => {
+    signInWithGitHub()
+    .then(result => {
+    const loggedUser = result.user;
+    console.log(loggedUser);
+    navigate(from, { replace: true })
+    })
+    .catch(error => {
+    console.log(error);
+    });
+    };
     
 
     return (
@@ -54,8 +83,8 @@ const LogIn = () => {
       </Form>
       <div className="mt-3 mb-3">Or sign in with:
       
-      <Button className='ml-2' variant="outline-primary"><FaGoogle/>Login with Google</Button>
-      <Button variant="outline-secondary"><FaGithub/>Login with Github</Button>
+      <Button className='ml-2' variant="outline-primary" onClick={handleGoogleSignIn}><FaGoogle/>Login with Google</Button>
+      <Button variant="outline-secondary" onClick={handleGithubSignIn}><FaGithub/>Login with Github</Button>
 
       </div>
       
