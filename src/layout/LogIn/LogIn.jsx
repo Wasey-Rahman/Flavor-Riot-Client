@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 // import { GoogleLoginButton, GithubLoginButton } from 'react-social-login-buttons';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Footer from '../../Shared/Footer/Footer';
@@ -9,6 +9,12 @@ import { AuthContext } from '../../Provider/AuthProvider';
 
 const LogIn = () => {
   const {signIn}=useContext(AuthContext);
+  const navigate =useNavigate();
+  const location =useLocation();
+  console.log('login page',location)
+  const from=location.state?.from?.pathname ||'/'
+
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -19,6 +25,7 @@ const LogIn = () => {
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from,{replace:true})
       })
       .catch(error => {
         console.log(error);

@@ -2,10 +2,16 @@ import React, { useContext, useState } from 'react';
 import { Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
 // import Ellipse from './Ellipse 1(1).png';
 
 const Navigation = () => {
-  const {user}=useContext(AuthContext);
+  const {user,logOut}=useContext(AuthContext);
+  const handleLogOut=()=>{
+    logOut()
+    .then()
+    .catch(error=>console.log(error))
+  }
   //   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [username, setUsername] = useState('');
  
@@ -30,14 +36,26 @@ const Navigation = () => {
           <Nav className="mx-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="blog">Blog</Nav.Link>
+            {
+              user && <FaUserCircle style={{fontSize:'2rem'}}></FaUserCircle>
+            }
+            {user?
+              <Button onClick={handleLogOut}  variant="secondary">LogOut</Button>:
+              <Link to="/login">
+                <Button variant="secondary">LogIn</Button>
+              </Link>
+
+              }
           </Nav>
         </Navbar.Collapse>
-        <NavLink>{user.displayName}</NavLink>
+        {/* <NavLink>{user.displayName}</NavLink>
           <Link to={`/login`}>
           <Button  variant="dark">LogIn</Button>
-          </Link>
+          </Link> */}
           
             
+            
+
             
         
         {/* <Nav>

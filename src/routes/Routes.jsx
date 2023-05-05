@@ -6,6 +6,7 @@ import NotFound from "../404_page/NotFound";
 import Register from "../layout/Register/Register";
 import Blog from "../Blog/Blog";
 import Pdf from "../Blog/DownloadPdf/Pdf";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -34,7 +35,7 @@ import Pdf from "../Blog/DownloadPdf/Pdf";
     
     {
       path:'/ChefRecipes/:id',
-      element:<ChefRecipes></ChefRecipes>,
+      element:<PrivateRoute><ChefRecipes></ChefRecipes></PrivateRoute>,
       loader:({params})=>fetch(`https://flavor-riot-server-waseyrahman19-gmailcom.vercel.app/chef/${params.id}`)
     },
     {

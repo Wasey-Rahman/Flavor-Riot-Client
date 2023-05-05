@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword,signOut } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
@@ -24,31 +24,43 @@ const app = initializeApp(firebaseConfig);
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
-const user ={diaplayName :'Mithai'}
+  const [user, setUser] = useState(null);
+  const[loading,setLoading]=useState(true);
+// const user ={diaplayName :'Mithai'}
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, user => {
       setUser(user);
+      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
 
   const createUser = (email, password) => {
+    setLoading(true);
     const auth = getAuth();
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn =(email,password)=>{
+    setLoading(true);
     const auth = getAuth();
     return signInWithEmailAndPassword(auth,email,password);
   }
 
+  const logOut=()=>{
+    setLoading(true);
+    const auth = getAuth();
+    return signOut(auth);
+  }
+
   const authInfo = {
     user,
+    loading,
     createUser,
-    signIn
+    signIn,
+    logOut
   };
 
   return (
